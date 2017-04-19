@@ -42,25 +42,8 @@ public abstract class ScalarPanelTextFieldParseableAbstract extends ScalarPanelT
 
     @Override
     protected AbstractTextComponent<String> createTextFieldForRegular(final String id) {
-        final AbstractTextComponent<String> textField = new TextField<>(id, new Model<String>() {
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public String getObject() {
-                return getModel().getObjectAsString();
-            }
-
-            @Override
-            public void setObject(final String object) {
-                if (object == null) {
-                    getModel().setObject(null);
-                } else {
-                    getModel().setObjectAsString(object);
-                }
-            }
-        });
-        return textField;
+        final Model<String> textFieldModel = new TextFieldStringModel(this);
+        return new TextField<>(id, textFieldModel);
     }
-
 
 }

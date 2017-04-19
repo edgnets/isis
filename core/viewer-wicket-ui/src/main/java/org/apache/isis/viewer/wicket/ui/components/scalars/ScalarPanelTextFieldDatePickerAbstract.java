@@ -63,7 +63,8 @@ public abstract class ScalarPanelTextFieldDatePickerAbstract<T extends Serializa
     }
 
     protected AbstractTextComponent<T> createTextFieldForRegular(final String id) {
-        return new TextFieldWithDateTimePicker<>(id, newTextFieldValueModel(), cls, converter);
+        final TextFieldValueModel<T> textFieldValueModel = new TextFieldValueModel<>(this);
+        return new TextFieldWithDateTimePicker<>(id, textFieldValueModel, cls, converter);
     }
 
     @Override
@@ -74,7 +75,8 @@ public abstract class ScalarPanelTextFieldDatePickerAbstract<T extends Serializa
 
     protected Component addComponentForCompact() {
         Fragment compactFragment = getCompactFragment(CompactType.SPAN);
-        final Label label = new Label(ID_SCALAR_IF_COMPACT, newTextFieldValueModel()) {
+        final TextFieldValueModel<T> textFieldValueModel = new TextFieldValueModel<>(this);
+        final Label label = new Label(ID_SCALAR_IF_COMPACT, textFieldValueModel) {
             @Override
             public <C> IConverter<C> getConverter(Class<C> type) {
                 return (IConverter<C>) converter;

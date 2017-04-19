@@ -43,7 +43,8 @@ public class FloatPanel extends ScalarPanelTextFieldNumeric<Float> {
 
     @Override
     protected AbstractTextComponent<Float> createTextFieldForRegular(final String id) {
-        return new TextField<Float>(id, new TextFieldValueModel<Float>(this), Float.class) {
+        final TextFieldValueModel<Float> textFieldValueModel = new TextFieldValueModel<>(this);
+        return new TextField<Float>(id, textFieldValueModel, Float.class) {
             private static final long serialVersionUID = 1L;
 
             @SuppressWarnings("unchecked")

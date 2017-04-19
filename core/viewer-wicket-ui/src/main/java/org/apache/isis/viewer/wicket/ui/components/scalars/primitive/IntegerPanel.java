@@ -43,7 +43,8 @@ public class IntegerPanel extends ScalarPanelTextFieldNumeric<Integer> {
 
     @Override
     protected AbstractTextComponent<Integer> createTextFieldForRegular(final String id) {
-        return new TextField<Integer>(id, new TextFieldValueModel<Integer>(this), Integer.class) {
+        final TextFieldValueModel<Integer> textFieldValueModel = new TextFieldValueModel<>(this);
+        return new TextField<Integer>(id, textFieldValueModel, Integer.class) {
             private static final long serialVersionUID = 1L;
 
             @SuppressWarnings("unchecked")

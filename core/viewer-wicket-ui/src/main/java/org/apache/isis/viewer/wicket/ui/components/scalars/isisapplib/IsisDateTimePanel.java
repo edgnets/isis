@@ -42,7 +42,8 @@ public class IsisDateTimePanel extends ScalarPanelTextFieldDatePickerAbstract<or
     }
 
     protected AbstractTextComponent<DateTime> createTextFieldForRegular(final String id) {
-        return new TextFieldWithDateTimePicker<>(id, new TextFieldValueModel<org.apache.isis.applib.value.DateTime>(this), cls, converter);
+        final TextFieldValueModel<DateTime> textFieldValueModel = new TextFieldValueModel<>(this);
+        return new TextFieldWithDateTimePicker<>(id, textFieldValueModel, cls, converter);
     }
 
     @Override

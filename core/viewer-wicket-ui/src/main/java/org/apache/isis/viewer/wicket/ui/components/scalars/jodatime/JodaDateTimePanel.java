@@ -43,7 +43,8 @@ public class JodaDateTimePanel extends ScalarPanelTextFieldDatePickerAbstract<Da
     }
 
     protected AbstractTextComponent<DateTime> createTextFieldForRegular(final String id) {
-        return new TextFieldWithDateTimePicker<>(id, new TextFieldValueModel<DateTime>(this), cls, converter);
+        final TextFieldValueModel<DateTime> textFieldValueModel = new TextFieldValueModel<>(this);
+        return new TextFieldWithDateTimePicker<>(id, textFieldValueModel, cls, converter);
     }
 
     @Override

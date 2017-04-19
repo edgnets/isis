@@ -19,7 +19,6 @@
 
 package org.apache.isis.core.metamodel.facets.properties.editstyle;
 
-import org.apache.isis.applib.annotation.PropertyEditStyle;
 import org.apache.isis.core.metamodel.facetapi.Facet;
 import org.apache.isis.core.metamodel.facetapi.FacetAbstract;
 import org.apache.isis.core.metamodel.facetapi.FacetHolder;
@@ -29,7 +28,7 @@ public abstract class PropertyEditStyleFacetAbstract extends FacetAbstract
 
 
     public static Class<? extends Facet> type() {
-        return PropertyEditStyleFacetAbstract.class;
+        return PropertyEditStyleFacet.class;
     }
 
     public PropertyEditStyleFacetAbstract(final FacetHolder holder) {

@@ -43,7 +43,8 @@ public class DoublePanel extends ScalarPanelTextFieldNumeric<Double> {
     
     @Override
     protected AbstractTextComponent<Double> createTextFieldForRegular(final String id) {
-        return new TextField<Double>(id, new TextFieldValueModel<Double>(this), Double.class) {
+        final TextFieldValueModel<Double> textFieldValueModel = new TextFieldValueModel<>(this);
+        return new TextField<Double>(id, textFieldValueModel, Double.class) {
             private static final long serialVersionUID = 1L;
 
             @SuppressWarnings("unchecked")

@@ -43,7 +43,8 @@ public class ShortPanel extends ScalarPanelTextFieldNumeric<Short> {
 
     @Override
     protected AbstractTextComponent<Short> createTextFieldForRegular(final String id) {
-        return new TextField<Short>(id, new TextFieldValueModel<Short>(this), Short.class) {
+        final TextFieldValueModel<Short> textFieldValueModel = new TextFieldValueModel<>(this);
+        return new TextField<Short>(id, textFieldValueModel, Short.class) {
             private static final long serialVersionUID = 1L;
 
             @SuppressWarnings("unchecked")
