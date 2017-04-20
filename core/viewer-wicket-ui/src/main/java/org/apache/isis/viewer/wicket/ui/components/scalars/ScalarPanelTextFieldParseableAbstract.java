@@ -22,10 +22,7 @@ package org.apache.isis.viewer.wicket.ui.components.scalars;
 import org.apache.wicket.markup.html.form.AbstractTextComponent;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.validation.validator.StringValidator;
 
-import org.apache.isis.core.metamodel.facets.objectvalue.maxlen.MaxLengthFacet;
-import org.apache.isis.core.metamodel.spec.ObjectSpecification;
 import org.apache.isis.viewer.wicket.model.models.ScalarModel;
 
 /**
@@ -65,23 +62,5 @@ public abstract class ScalarPanelTextFieldParseableAbstract extends ScalarPanelT
         return textField;
     }
 
-    @Override
-    protected void addStandardSemantics() {
-        super.addStandardSemantics();
-
-        addMaxLengthValidator();
-    }
-
-    private void addMaxLengthValidator() {
-        final ScalarModel scalarModel = getModel();
-        final AbstractTextComponent<String> textField = getTextField();
-
-        final ObjectSpecification facetHolder = scalarModel.getTypeOfSpecification();
-
-        final MaxLengthFacet maxLengthFacet = facetHolder.getFacet(MaxLengthFacet.class);
-        if (maxLengthFacet != null) {
-            textField.add(StringValidator.maximumLength(maxLengthFacet.value()));
-        }
-    }
 
 }

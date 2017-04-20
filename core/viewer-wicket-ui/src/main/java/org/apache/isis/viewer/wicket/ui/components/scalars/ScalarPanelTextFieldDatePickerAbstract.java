@@ -28,11 +28,7 @@ import org.apache.wicket.markup.html.form.AbstractTextComponent;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.convert.IConverter;
-import org.apache.wicket.validation.IValidatable;
-import org.apache.wicket.validation.IValidator;
-import org.apache.wicket.validation.ValidationError;
 
-import org.apache.isis.core.metamodel.adapter.ObjectAdapter;
 import org.apache.isis.core.metamodel.facets.objectvalue.renderedadjusted.RenderedAdjustedFacet;
 import org.apache.isis.viewer.wicket.model.isis.WicketViewerSettings;
 import org.apache.isis.viewer.wicket.model.models.ScalarModel;
@@ -75,14 +71,7 @@ public abstract class ScalarPanelTextFieldDatePickerAbstract<T extends Serializa
         return new Fragment(id, "date", ScalarPanelTextFieldDatePickerAbstract.this);
     }
 
-    @Override
-    protected void addSemantics() {
-        super.addSemantics();
 
-        addObjectAdapterValidator();
-    }
-
-    
     protected Component addComponentForCompact() {
         Fragment compactFragment = getCompactFragment(CompactType.SPAN);
         final Label label = new Label(ID_SCALAR_IF_COMPACT, newTextFieldValueModel()) {
@@ -113,25 +102,6 @@ public abstract class ScalarPanelTextFieldDatePickerAbstract<T extends Serializa
         return null;
     }
 
-    private void addObjectAdapterValidator() {
-        final AbstractTextComponent<T> textField = getTextField();
-
-        textField.add(new IValidator<T>() {
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public void validate(final IValidatable<T> validatable) {
-                final T proposed = validatable.getValue();
-                final ObjectAdapter proposedAdapter = adapterFor(proposed);
-                String reasonIfAny = scalarModel.validate(proposedAdapter);
-                if (reasonIfAny != null) {
-                    final ValidationError error = new ValidationError();
-                    error.setMessage(reasonIfAny);
-                    validatable.error(error);
-                }
-            }
-        });
-    }
 
     
     @com.google.inject.Inject
@@ -140,8 +110,5 @@ public abstract class ScalarPanelTextFieldDatePickerAbstract<T extends Serializa
         return settings;
     }
 
-    private ObjectAdapter adapterFor(final Object pojo) {
-        return getPersistenceSession().adapterFor(pojo);
-    }
 
 }

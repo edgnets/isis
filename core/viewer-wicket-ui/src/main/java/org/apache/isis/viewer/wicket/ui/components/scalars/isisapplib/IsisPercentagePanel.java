@@ -42,9 +42,5 @@ public class IsisPercentagePanel extends ScalarPanelTextFieldParseableAbstract {
         return Model.of("isisPercentagePanel");
     }
 
-    @Override
-    protected void addSemantics() {
-        super.addSemantics();
-    }
 
 }

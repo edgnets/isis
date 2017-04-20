@@ -41,9 +41,5 @@ public class IsisTimeStampPanel extends ScalarPanelTextFieldParseableAbstract {
         return Model.of("isisTimeStampPanel");
     }
 
-    @Override
-    protected void addSemantics() {
-        super.addSemantics();
-    }
 
 }

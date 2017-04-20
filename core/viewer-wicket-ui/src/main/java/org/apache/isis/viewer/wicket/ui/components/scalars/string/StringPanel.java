@@ -41,10 +41,6 @@ public class StringPanel extends ScalarPanelTextFieldParseableAbstract {
         return Model.of("stringPanel");
     }
 
-    @Override
-    protected void addSemantics() {
-        super.addSemantics();
-    }
-    
+
     
 }

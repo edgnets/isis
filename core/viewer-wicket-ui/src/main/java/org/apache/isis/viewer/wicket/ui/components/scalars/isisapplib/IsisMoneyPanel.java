@@ -41,9 +41,5 @@ public class IsisMoneyPanel extends ScalarPanelTextFieldParseableAbstract {
         return Model.of("isisMoneyPanel");
     }
 
-    @Override
-    protected void addSemantics() {
-        super.addSemantics();
-    }
 
 }

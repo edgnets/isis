@@ -42,10 +42,6 @@ public class ValuePanel extends ScalarPanelTextFieldParseableAbstract {
         super(id, scalarModel);
     }
 
-    @Override
-    protected void addSemantics() {
-        super.addSemantics();
-    }
 
     @Override
     protected IModel<String> getScalarPanelType() {

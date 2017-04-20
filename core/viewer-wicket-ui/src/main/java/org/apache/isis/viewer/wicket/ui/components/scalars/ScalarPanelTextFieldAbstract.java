@@ -111,7 +111,6 @@ public abstract class ScalarPanelTextFieldAbstract<T extends Serializable> exten
         textField.setOutputMarkupId(true);
 
         addStandardSemantics();
-        addSemantics();
 
         final MarkupContainer labelIfRegular = createFormComponentLabel();
         scalarTypeContainer.add(labelIfRegular);
@@ -153,14 +152,6 @@ public abstract class ScalarPanelTextFieldAbstract<T extends Serializable> exten
 
     protected abstract IModel<String> getScalarPanelType();
 
-    /**
-     * Optional hook method
-     */
-    protected void addSemantics() {
-        // we don't call textField.setType(), since we want more control 
-        // over the parsing (using custom subclasses of TextField etc)
-    }
-
     private void addReplaceDisabledTagWithReadonlyTagBehaviourIfRequired(final Component component) {
         if(!getSettings().isReplaceDisabledTagWithReadonlyTag()) {
             return;
@@ -192,14 +183,15 @@ public abstract class ScalarPanelTextFieldAbstract<T extends Serializable> exten
         return new Fragment(id, "text", ScalarPanelTextFieldAbstract.this);
     }
 
-    protected void addStandardSemantics() {
+    private final void addStandardSemantics() {
         textField.setRequired(getModel().isRequired());
         setTextFieldSizeAndMaxLengthIfSpecified(textField);
 
-        addValidator();
+        addValidatorForIsisValidation();
     }
 
-    protected void addValidator() {
+
+    private void addValidatorForIsisValidation() {
         final ScalarModel scalarModel = getModel();
 
         textField.add(new IValidator<T>() {
@@ -219,24 +211,25 @@ public abstract class ScalarPanelTextFieldAbstract<T extends Serializable> exten
         });
     }
 
-    protected void setTextFieldSizeAndMaxLengthIfSpecified(AbstractTextComponent<T> textField) {
+    private void setTextFieldSizeAndMaxLengthIfSpecified(AbstractTextComponent<T> textField) {
 
         final Integer maxLength = getValueOf(getModel(), MaxLengthFacet.class);
         Integer typicalLength = getValueOf(getModel(), TypicalLengthFacet.class);
 
-        // doesn't make sense for typical length to be > maxLength 
+        // doesn't make sense for typical length to be > maxLength
         if(typicalLength != null && maxLength != null && typicalLength > maxLength) {
             typicalLength = maxLength;
         }
-        
+
         if (typicalLength != null) {
             textField.add(new AttributeModifier("size", Model.of("" + typicalLength)));
         }
-        
+
         if(maxLength != null) {
             textField.add(new AttributeModifier("maxlength", Model.of("" + maxLength)));
         }
     }
+
 
     private static Integer getValueOf(ScalarModel model, Class<? extends SingleIntValueFacet> facetType) {
         final SingleIntValueFacet facet = model.getFacet(facetType);

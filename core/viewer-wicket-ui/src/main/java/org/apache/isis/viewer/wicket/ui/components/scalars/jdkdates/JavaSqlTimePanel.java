@@ -42,9 +42,5 @@ public class JavaSqlTimePanel extends ScalarPanelTextFieldParseableAbstract {
         return Model.of("javaSqlTimePanel");
     }
 
-    @Override
-    protected void addSemantics() {
-        super.addSemantics();
-    }
 
 }

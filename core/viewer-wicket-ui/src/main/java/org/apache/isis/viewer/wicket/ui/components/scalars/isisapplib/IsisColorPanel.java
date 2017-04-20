@@ -40,9 +40,5 @@ public class IsisColorPanel extends ScalarPanelTextFieldParseableAbstract {
         return Model.of("isisColorPanel");
     }
 
-    @Override
-    protected void addSemantics() {
-        super.addSemantics();
-    }
 
 }
