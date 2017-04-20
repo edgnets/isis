@@ -29,7 +29,7 @@ import org.apache.isis.viewer.wicket.model.models.ScalarModel;
 
 /**
  * For custom {@link ScalarPanelTextFieldAbstract}s to use as the {@link Model}
- * of their {@link TextField} (as constructed in {@link ScalarPanelTextFieldAbstract#createTextFieldForRegular()}).
+ * of their {@link TextField} (as constructed in {@link ScalarPanelTextFieldAbstract#createTextFieldForRegular(String)}).
  */
 public class TextFieldValueModel<T extends Serializable> extends Model<T> {
     

@@ -25,7 +25,6 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.AbstractTextComponent;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.convert.IConverter;
@@ -67,7 +66,7 @@ public abstract class ScalarPanelTextFieldDatePickerAbstract<T extends Serializa
         return facet != null? facet.value(): 0;
     }
 
-    protected TextField<T> createTextField(final String id) {
+    protected AbstractTextComponent<T> createTextFieldForRegular(final String id) {
         return new TextFieldWithDateTimePicker<>(id, newTextFieldValueModel(), cls, converter);
     }
 

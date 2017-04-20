@@ -97,11 +97,7 @@ public abstract class ScalarPanelTextFieldAbstract<T extends Serializable> exten
         return textField;
     }
 
-    protected AbstractTextComponent<T> createTextFieldForRegular() {
-        return createTextField(ID_SCALAR_VALUE);
-    }
-
-    protected TextField<T> createTextField(final String id) {
+    protected AbstractTextComponent<T> createTextFieldForRegular(final String id) {
         return new TextField<>(id, newTextFieldValueModel(), cls);
     }
 
@@ -111,7 +107,7 @@ public abstract class ScalarPanelTextFieldAbstract<T extends Serializable> exten
 
     @Override
     protected MarkupContainer addComponentForRegular() {
-        textField = createTextFieldForRegular();
+        textField = createTextFieldForRegular(ID_SCALAR_VALUE);
         textField.setOutputMarkupId(true);
 
         addStandardSemantics();

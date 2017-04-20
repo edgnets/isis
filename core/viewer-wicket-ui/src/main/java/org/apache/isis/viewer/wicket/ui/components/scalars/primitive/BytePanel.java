@@ -42,8 +42,8 @@ public class BytePanel extends ScalarPanelTextFieldNumeric<Byte> {
     }
 
     @Override
-    protected AbstractTextComponent<Byte> createTextFieldForRegular() {
-        return new TextField<Byte>(ID_SCALAR_VALUE, new TextFieldValueModel<Byte>(this), Byte.class) {
+    protected AbstractTextComponent<Byte> createTextFieldForRegular(final String id) {
+        return new TextField<Byte>(id, new TextFieldValueModel<Byte>(this), Byte.class) {
             private static final long serialVersionUID = 1L;
 
             @SuppressWarnings("unchecked")

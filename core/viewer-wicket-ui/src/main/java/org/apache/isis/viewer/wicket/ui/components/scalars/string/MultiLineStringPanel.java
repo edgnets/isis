@@ -41,12 +41,12 @@ public class MultiLineStringPanel extends ScalarPanelTextFieldParseableAbstract 
     private static final long serialVersionUID = 1L;
     
     public MultiLineStringPanel(final String id, final ScalarModel scalarModel) {
-        super(id, ID_SCALAR_VALUE, scalarModel);
+        super(id, scalarModel);
     }
 
     @Override
-    protected AbstractTextComponent<String> createTextFieldForRegular() {
-        final TextArea<String> textField = new TextArea<String>(idTextField, new Model<String>() {
+    protected AbstractTextComponent<String> createTextFieldForRegular(final String id) {
+        final TextArea<String> textField = new TextArea<String>(id, new Model<String>() {
             private static final long serialVersionUID = 1L;
 
             @Override

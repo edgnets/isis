@@ -45,8 +45,8 @@ public class JavaMathBigIntegerPanel extends ScalarPanelTextFieldNumeric<BigInte
     }
 
     @Override
-    protected AbstractTextComponent<BigInteger> createTextFieldForRegular() {
-        return new TextField<BigInteger>(ID_SCALAR_VALUE, new TextFieldValueModel<BigInteger>(this), BigInteger.class) {
+    protected AbstractTextComponent<BigInteger> createTextFieldForRegular(final String id) {
+        return new TextField<BigInteger>(id, new TextFieldValueModel<BigInteger>(this), BigInteger.class) {
             private static final long serialVersionUID = 1L;
 
             @SuppressWarnings("unchecked")

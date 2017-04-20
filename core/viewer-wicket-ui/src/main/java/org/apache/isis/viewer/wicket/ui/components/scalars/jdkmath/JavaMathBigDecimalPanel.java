@@ -21,11 +21,12 @@ package org.apache.isis.viewer.wicket.ui.components.scalars.jdkmath;
 
 import java.math.BigDecimal;
 
-import org.apache.isis.viewer.wicket.model.models.ScalarModel;
-import org.apache.isis.viewer.wicket.ui.components.scalars.ScalarPanelTextFieldNumeric;
-import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.AbstractTextComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import org.apache.isis.viewer.wicket.model.models.ScalarModel;
+import org.apache.isis.viewer.wicket.ui.components.scalars.ScalarPanelTextFieldNumeric;
 
 /**
  * Panel for rendering scalars of type {@link BigDecimal}.
@@ -40,8 +41,8 @@ public class JavaMathBigDecimalPanel extends ScalarPanelTextFieldNumeric<BigDeci
         super(id, scalarModel, BigDecimal.class, converter.forViewMode());
         this.converter = converter;
     }
- 
-    protected TextField<BigDecimal> createTextField(final String id) {
+
+    protected AbstractTextComponent<BigDecimal> createTextFieldForRegular(final String id) {
         final ScalarModel model = getModel();
         return new BigDecimalTextField(id, newTextFieldValueModel(), cls, model, converter);
     }

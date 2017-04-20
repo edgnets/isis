@@ -36,16 +36,16 @@ import org.apache.isis.viewer.wicket.model.models.ScalarModel;
 public abstract class ScalarPanelTextFieldParseableAbstract extends ScalarPanelTextFieldAbstract<String> {
 
     private static final long serialVersionUID = 1L;
-    protected final String idTextField;
 
-    public ScalarPanelTextFieldParseableAbstract(final String id, final String idTextField, final ScalarModel scalarModel) {
+    public ScalarPanelTextFieldParseableAbstract(
+            final String id,
+            final ScalarModel scalarModel) {
         super(id, scalarModel, String.class);
-        this.idTextField = idTextField;
     }
 
     @Override
-    protected AbstractTextComponent<String> createTextFieldForRegular() {
-        final AbstractTextComponent<String> textField = new TextField<>(idTextField, new Model<String>() {
+    protected AbstractTextComponent<String> createTextFieldForRegular(final String id) {
+        final AbstractTextComponent<String> textField = new TextField<>(id, new Model<String>() {
             private static final long serialVersionUID = 1L;
 
             @Override

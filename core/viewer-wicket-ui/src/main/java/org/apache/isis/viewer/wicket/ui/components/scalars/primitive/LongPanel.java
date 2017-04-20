@@ -42,8 +42,8 @@ public class LongPanel extends ScalarPanelTextFieldNumeric<Long> {
     }
 
     @Override
-    protected AbstractTextComponent<Long> createTextFieldForRegular() {
-        return new TextField<Long>(ID_SCALAR_VALUE, new TextFieldValueModel<Long>(this), Long.class) {
+    protected AbstractTextComponent<Long> createTextFieldForRegular(final String id) {
+        return new TextField<Long>(id, new TextFieldValueModel<Long>(this), Long.class) {
             private static final long serialVersionUID = 1L;
 
             @SuppressWarnings("unchecked")
